@@ -1,0 +1,21 @@
+﻿
+<Quest Name="global">
+	<Event Name="init">
+		<Script Name="OnInit">
+
+		</Script>
+	</Event>
+	
+	<Event Name="changeLevel">
+		<Script Name="changeLevel">
+level = "default.xml"
+location = "default"
+if(Parameters.ContainsKey("level")):
+	level = Parameters["level"]
+if(Parameters.ContainsKey("location")):
+	location = Parameters["location"]
+Game.ChangeLevel(level, location)
+		</Script>
+	</Event>
+	
+</Quest>
