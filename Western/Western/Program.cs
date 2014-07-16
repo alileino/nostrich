@@ -95,7 +95,7 @@ namespace Western
             base.OnLoad(e);
             _world.Init();
 
-            _world.ChangeLevel("town.xml");
+            _world.ChangeLevel("arena.xml");
             //ChangeLevel();
             //GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.Blend);
@@ -173,15 +173,15 @@ namespace Western
         {
             using (Game game = new Game())
             {
-                try
-                {
+                //try
+                //{
                     game.Run(50, 30);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    Console.ReadKey();
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex);
+                //    Console.ReadKey();
+                //}
             }
         }
     }

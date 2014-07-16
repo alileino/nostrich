@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,8 @@ namespace WesternLib
     /// </summary>
     public class ResourceManager
     {
+        private static readonly string DEFAULT_TEXTURE = Path.Combine("graphics", "DEFAULT.png");
+
         private Dictionary<string, Texture> _textures = new Dictionary<string, Texture>();
         private Dictionary<string, Tile> _tiles = new Dictionary<string, Tile>();
         private readonly Color TRANSPARENT_COLOR = Color.Magenta;
@@ -133,6 +136,12 @@ namespace WesternLib
         // This code could be moved to the Texture class, probably
         private Texture LoadTexture(string filename)
         {
+            string key = filename;
+            FileInfo fileInfo = new FileInfo(filename);
+            if (!fileInfo.Exists)
+            {
+                filename = DEFAULT_TEXTURE;
+            }
             try
             {
                 Bitmap bitmap = new Bitmap(filename);
@@ -158,7 +167,7 @@ namespace WesternLib
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
 
-                _textures.Add(filename, texture);
+                _textures.Add(key, texture);
 
                 return texture;
             }
