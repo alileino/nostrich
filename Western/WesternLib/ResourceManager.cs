@@ -15,7 +15,7 @@ namespace WesternLib
     /// </summary>
     public class ResourceManager
     {
-        private static readonly string DEFAULT_TEXTURE = Path.Combine("graphics", "spritetest.png");
+        private static readonly string DEFAULT_TEXTURE = Path.Combine("graphics", "DEFAULT.png");
 
         private Dictionary<string, Texture> _textures = new Dictionary<string, Texture>();
         private Dictionary<string, Tile> _tiles = new Dictionary<string, Tile>();

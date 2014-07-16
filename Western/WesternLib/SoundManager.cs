@@ -27,6 +27,7 @@ namespace WesternLib
 
     public class GameSound
     {
+        private static readonly string DEFAULT_SOUND = Path.Combine("Sound", "silence.wav");
         WaveChannel32 _waveStream;
         public string Name { get; set; }
         public WaveStream Stream { get { return _waveStream; } }
@@ -73,6 +74,11 @@ namespace WesternLib
             //var fileSampleProvider = fileReader.ToSampleProvider();
             //var fileSampleChannel = new SampleChannel(fileReader);
             //fileReader.Volume = volume;
+            FileInfo fileInfo = new FileInfo(filename);
+            if (!fileInfo.Exists)
+            {
+                filename = DEFAULT_SOUND;
+            }
             WaveChannel32 inputStream;
             if (filename.EndsWith(".mp3"))
             {
